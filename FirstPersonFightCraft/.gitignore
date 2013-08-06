@@ -1,31 +1,31 @@
-    # Eclipse stuff
-    /.classpath
-    /.project
-    /.settings
+# Eclipse stuff
+/.classpath
+/.project
+/.settings
 
-    # netbeans
-    /nbproject
+# netbeans
+/nbproject
 
-    # we use maven!
-    /build.xml
+# we use maven!
+/build.xml
 
-    # maven
-    /target
+# maven
+/target
 
-    # vim
-    .*.sw[a-p]
+# vim
+.*.sw[a-p]
 
-    # various other potential build files
-    /build
-    /bin
-    /dist
-    /manifest.mf
+# various other potential build files
+/build
+/bin
+/dist
+/manifest.mf
 
-    # Mac filesystem dust
-    /.DS_Store
+# Mac filesystem dust
+/.DS_Store
 
-    # intellij
-    *.iml
-    *.ipr
-    *.iws
-    .idea/
+# intellij
+*.iml
+*.ipr
+*.iws
+.idea/
