@@ -12,8 +12,12 @@ import org.bukkit.entity.Player;
  * Time: 10:02 PM
  * To change this template use File | Settings | File Templates.
  */
-public class FirstPersonFightCraftCommandExecutor implements CommandExecutor {
-    public FirstPersonFightCraftCommandExecutor(FirstPersonFightCraft firstPersonFightCraft) {
+public class FightCraftCommandExecutor implements CommandExecutor {
+
+    private FirstPersonFightCraft plugin;
+
+    public FightCraftCommandExecutor(FirstPersonFightCraft plugin) {
+        this.plugin = plugin;
     }
 
     @Override

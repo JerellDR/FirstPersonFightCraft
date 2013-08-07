@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.jdub03.spectorgadgetz.FirstPersonFightCraft.FirstPerso
+ nFightCraft
+
