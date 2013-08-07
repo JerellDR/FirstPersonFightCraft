@@ -1,35 +1,54 @@
 package com.jdub03.spectorgadgetz.FirstPersonFightCraft;
 
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.logging.Logger;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Mrgadgetz
+ * Created by Mrgadgetz
  * Date: 8/5/13
  * Time: 10:02 PM
- * To change this template use File | Settings | File Templates.
+ * .
  */
 public class FightCraftCommandExecutor implements CommandExecutor {
 
     private FirstPersonFightCraft plugin;
+    private final static Logger LOGGER = Logger.getLogger(FightCraftCommandExecutor.class.getName());
 
-    public FightCraftCommandExecutor(FirstPersonFightCraft plugin) {
-        this.plugin = plugin;
+    public FightCraftCommandExecutor(FirstPersonFightCraft craftPlugin) {
+        this.plugin = craftPlugin;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
-        if (sender instanceof Player){
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (sender instanceof Player) {
             Player player = (Player) sender;
-            // do something
-        } else {
-            sender.sendMessage("You must be a player!");
-            return false;
+            LOGGER.info("sender instance of player");
+            if (cmd.getName().equalsIgnoreCase("lordcmos")) {
+                LOGGER.info("ignorecase true");
+                if (player.hasPermission("FirstPersonFightCraft.lordcmos")) {
+                    LOGGER.info(player.getDisplayName() + " has " + cmd.getPermission());
+                    if (args.length >= 2) {
+                        LOGGER.info("args >= 2");
+
+                        player.getInventory().addItem(new ItemStack(Material.getMaterial(Integer.parseInt(args[0])), Integer.parseInt(args[1])));
+                        player.sendMessage("Gave you" + args[1] + " of " + Material.getMaterial(Integer.parseInt(args[0])).name() + ".");
+                        return true;
+                    } else {
+                        player.sendMessage("Not enough arguments with the command.");
+                        return true;
+                    }
+                }
+            }
         }
-        // do something
+
+        sender.sendMessage("Must be a player to do that");
         return false;
     }
 }
+

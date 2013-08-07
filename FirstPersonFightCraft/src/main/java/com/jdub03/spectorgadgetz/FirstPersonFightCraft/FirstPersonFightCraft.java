@@ -1,11 +1,10 @@
 package com.jdub03.spectorgadgetz.FirstPersonFightCraft;
 
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -15,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * Time: 9:37 PM
  */
 public class FirstPersonFightCraft extends JavaPlugin {
+    public Plugin plugin;
 
     @Override
     public void onEnable() {
@@ -29,21 +29,15 @@ public class FirstPersonFightCraft extends JavaPlugin {
         getLogger().info("onDisable has been invoked");
     }
 
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("lordcmos")) { // if the player typed /lordCmos then do the following...
-            // doSomething
-            return true;
-        }  //if this has happened the function will return true.
-        return false;
-    }
 
     @EventHandler
     public void onPlayerInteractBlock(PlayerInteractEntityEvent event) {
         Player player = event.getPlayer();
 
+
         if (player.getItemInHand().getTypeId() == Material.FISHING_ROD.getId()) {
 
-
+            getLogger().info(player.getName() + " has attempted a lightning strike!");
             player.getWorld().strikeLightning(player.getTargetBlock(null, 200).getLocation());
         }
     }
