@@ -13,7 +13,6 @@ import java.util.logging.Logger;
  * Created by Mrgadgetz
  * Date: 8/5/13
  * Time: 10:02 PM
- * .
  */
 public class CmosCommandExecutor implements CommandExecutor {
 

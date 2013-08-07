@@ -15,11 +15,10 @@ import java.util.logging.Logger;
  * Created by Mrgadgetz
  * Date: 8/7/13
  * Time: 3:22 PM
- * .
  */
 public class StrikeCommandExecutor implements CommandExecutor {
     private FirstPersonFightCraft plugin;
-    Logger LOGGER = Logger.getLogger(StrikeCommandExecutor.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(StrikeCommandExecutor.class.getName());
 
     public StrikeCommandExecutor(FirstPersonFightCraft craftPlugin) {
         this.plugin = craftPlugin;
@@ -27,27 +26,41 @@ public class StrikeCommandExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Player player = (Player)sender;
-        World world = player.getWorld();
-        if ( label.equals("strikeforce"))  {
-            if (args.length == 0) {
-                Block targetBlock = player.getTargetBlock(null, 50);
-                Location location = targetBlock.getLocation();
-                world.strikeLightning(location);
-                world.createExplosion(location, 2);
-            } else if (args.length == 1) {
-                if (player.getServer().getPlayer(args[0]) != null ) {
-                    Player targetPlayer = player.getServer().getPlayer(args[0]);
-                    Location location = targetPlayer.getLocation();
+        if (sender instanceof Player) {
+
+            Player player = (Player) sender;
+            World world = player.getWorld();
+
+            if (label.equalsIgnoreCase("strikeforce")) {
+                if (args.length == 0) {
+
+                    Block targetBlock = player.getTargetBlock(null, 50);
+                    Location location = targetBlock.getLocation();
                     world.strikeLightning(location);
-                    player.sendMessage(ChatColor.GRAY + "strikeforce initiated on " + targetPlayer.getDisplayName() + "!");
-                }else {
-                    player.sendMessage(ChatColor.RED + "Error: The player is offline.");
+                    world.createExplosion(location, 2);
+
+                } else if (args.length == 1) {
+                    if (player.getServer().getPlayer(args[0]) != null) {
+
+                        Player targetPlayer = player.getServer().getPlayer(args[0]);
+                        Location location = targetPlayer.getLocation();
+                        world.strikeLightning(location);
+
+                        player.sendMessage(ChatColor.GRAY + "strikeforce initiated on " + targetPlayer.getDisplayName() + "!");
+
+                    } else {
+
+                        player.sendMessage(ChatColor.RED + "Error: The player is offline.");
+                    }
+
+                } else if (args.length > 1) {
+
+                    player.sendMessage(ChatColor.RED + "Error Too many arguments!");
                 }
-            } else if (args.length > 1) {
-                player.sendMessage(ChatColor.RED + "Error Too many argements!");
             }
         }
+
+        sender.sendMessage("Must be a player to behold the glory of StrikeForce!!");
         return false;
 
     }
