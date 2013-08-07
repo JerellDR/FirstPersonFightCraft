@@ -9,9 +9,20 @@ commands:
     permission: FirstPersonFightCraft.lordcmos
     permission-message: 'You don''t have <permission>'
 
+
+  strikeforce:
+    description: 'Initriate lightning strike on player or world'
+    usage: '/strikeforce <player> can strike world with lightning or specify a player'
+    permission: FirstPersonFightCraft.strikeforce
+    permission-message: 'You don''t have <permission>'
+
 permissions:
   FirstPersonFightCraft.lordcmos:
     description: Give yourself items.
+    default: true
+
+  FirstPersonFirghtCraft.strikeforce:
+    description: Fight with the power of the gods
     default: true
 
 

@@ -15,12 +15,12 @@ import java.util.logging.Logger;
  * Time: 10:02 PM
  * .
  */
-public class FightCraftCommandExecutor implements CommandExecutor {
+public class CmosCommandExecutor implements CommandExecutor {
 
     private FirstPersonFightCraft plugin;
-    private final static Logger LOGGER = Logger.getLogger(FightCraftCommandExecutor.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(CmosCommandExecutor.class.getName());
 
-    public FightCraftCommandExecutor(FirstPersonFightCraft craftPlugin) {
+    public CmosCommandExecutor(FirstPersonFightCraft craftPlugin) {
         this.plugin = craftPlugin;
     }
 

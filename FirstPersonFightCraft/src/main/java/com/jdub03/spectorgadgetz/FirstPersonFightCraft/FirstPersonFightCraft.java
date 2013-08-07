@@ -1,9 +1,5 @@
 package com.jdub03.spectorgadgetz.FirstPersonFightCraft;
 
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,7 +16,9 @@ public class FirstPersonFightCraft extends JavaPlugin {
     public void onEnable() {
         // TODO Insert logic to be performed when the plugin is enabled
         getLogger().info("onEnable has been invoked");
-        getCommand("lordcmos").setExecutor(new FightCraftCommandExecutor(this));
+        getCommand("lordcmos").setExecutor(new CmosCommandExecutor(this));
+
+        getCommand("strikeforce").setExecutor(new StrikeCommandExecutor(this));
     }
 
     @Override
@@ -30,15 +28,4 @@ public class FirstPersonFightCraft extends JavaPlugin {
     }
 
 
-    @EventHandler
-    public void onPlayerInteractBlock(PlayerInteractEntityEvent event) {
-        Player player = event.getPlayer();
-
-
-        if (player.getItemInHand().getTypeId() == Material.FISHING_ROD.getId()) {
-
-            getLogger().info(player.getName() + " has attempted a lightning strike!");
-            player.getWorld().strikeLightning(player.getTargetBlock(null, 200).getLocation());
-        }
-    }
 }
