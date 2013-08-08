@@ -45,6 +45,7 @@ public class StrikeCommandExecutor implements CommandExecutor {
                         Player targetPlayer = player.getServer().getPlayer(args[0]);
                         Location location = targetPlayer.getLocation();
                         world.strikeLightning(location);
+                        world.createExplosion(location, 0F);
 
                         player.sendMessage(ChatColor.GRAY + "strikeforce initiated on " + targetPlayer.getDisplayName() + "!");
 

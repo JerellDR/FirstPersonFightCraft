@@ -5,15 +5,20 @@ author: mrgadgetz
 commands:
   lordcmos:
     description: 'Give yourself items.'
-    usage: '/lordcmos [itemid] <amount> where itemid is the item you want and amount is number of items'
+    usage: '/<command> [itemid] <amount> where itemid is the item you want and amount is number of items'
     permission: FirstPersonFightCraft.lordcmos
     permission-message: 'You don''t have <permission>'
 
-
   strikeforce:
     description: 'Initriate lightning strike on player or world'
-    usage: '/strikeforce <player> can strike world with lightning or specify a player'
+    usage: '/<command> <player> can strike world with lightning or specify a player'
     permission: FirstPersonFightCraft.strikeforce
+    permission-message: 'You don''t have <permission>'
+
+  explodeyarrows:
+    description: 'Use arrows of justice.'
+    usage: '/<command>  activates exploding arrows
+    permission: FirstPersonFightCraft.explodeyarrows
     permission-message: 'You don''t have <permission>'
 
 permissions:
@@ -21,8 +26,12 @@ permissions:
     description: Give yourself items.
     default: true
 
-  FirstPersonFirghtCraft.strikeforce:
+  FirstPersonFightCraft.strikeforce:
     description: Fight with the power of the gods
+    default: true
+
+  FirstPersonFightCraft.explodeyarrows:
+    description: Activate explodey arrows
     default: true
 
 
