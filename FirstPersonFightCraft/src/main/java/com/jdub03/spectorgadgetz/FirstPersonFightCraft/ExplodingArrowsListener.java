@@ -3,6 +3,8 @@ package com.jdub03.spectorgadgetz.FirstPersonFightCraft;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 /**
@@ -11,6 +13,7 @@ import org.bukkit.event.entity.ProjectileHitEvent;
  * Time: 10:47 PM
  */
 public class ExplodingArrowsListener implements Listener {
+
     private FirstPersonFightCraft plugin;
 
     public ExplodingArrowsListener(FirstPersonFightCraft craftPlugin){
@@ -18,6 +21,7 @@ public class ExplodingArrowsListener implements Listener {
 
     }
 
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onProjectiveHit(ProjectileHitEvent event) {
         Entity entity = event.getEntity();
 

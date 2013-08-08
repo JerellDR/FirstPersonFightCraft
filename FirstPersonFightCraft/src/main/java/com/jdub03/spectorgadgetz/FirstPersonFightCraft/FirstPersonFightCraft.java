@@ -1,5 +1,6 @@
 package com.jdub03.spectorgadgetz.FirstPersonFightCraft;
 
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -17,13 +18,18 @@ public class FirstPersonFightCraft extends JavaPlugin {
     public void onEnable() {
 
         getLogger().info("onEnable has been invoked");
+        this.enabledPlayers = new ArrayList<String>();
 
         // enable console commmands
         getCommand("lordcmos").setExecutor(new CmosCommandExecutor(this));
         getCommand("strikeforce").setExecutor(new StrikeCommandExecutor(this));
         getCommand("explodeyarrows").setExecutor(new ExplodeyArrowsCommandExecutor(this));
 
-        this.enabledPlayers = new ArrayList<String>();
+        PluginManager manager = this.getServer().getPluginManager();
+
+        manager.registerEvents(new ExplodingArrowsListener(this), this);
+
+
     }
 
     @Override

@@ -17,7 +17,7 @@ commands:
 
   explodeyarrows:
     description: 'Use arrows of justice.'
-    usage: '/<command>  activates exploding arrows
+    usage: '/<command>  activates exploding arrows'
     permission: FirstPersonFightCraft.explodeyarrows
     permission-message: 'You don''t have <permission>'
 
